@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Путешествия</title>
+    <style>
+        table {background: #FFBBBB; color: #A63D3D;}
+        td, th {background: #a2dda2; padding: 5px;}
+    </style>
+</head>
+<body>
+    <h1>Записанные путешествия</h1>
+    <form id="add-journey-form" action="/add-journey" method="POST">
+        <table border="2">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Destination</th>
+                    <th>Date</th>
+                    <th>Budget</th>
+                    <th>Preferable services</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for jour in journeys %}
+                <tr>
+                    <th>{{ jour.id }}</th>
+                    <th>{{ jour.destination }}</th>
+                    <th>{{ jour.date }}</th>
+                    <th>{{ jour.budget }}</th>
+                    <th>{{ jour.pref_services }}</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table><br>
+        <input type="text" name="destination" placeholder="Destination" required>
+        <input type="date" name="date" placeholder="Date" required>
+        <input type="text" name="budget" placeholder="Budget" required>
+        <input type="text" name="pref_services" placeholder="Preferable services" required>
+        <button type="submit" form="add-journey-form">Добавить</button>
+    </form>
+
+</body>
